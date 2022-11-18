@@ -5,8 +5,17 @@ defmodule HabitsWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", HabitsWeb do
+  scope "/api" do
     pipe_through :api
+
+    forward "/", Absinthe.Plug,
+      schema: HabitsWeb.GraphQL.Schema,
+      context: %{pubsub: HabitsWeb.Endpoint}
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: HabitsWeb.GraphQL.Schema,
+      interface: :simple,
+      context: %{pubsub: HabitsWeb.Endpoint}
   end
 
   # Enables the Swoosh mailbox preview in development.
