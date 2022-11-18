@@ -22,6 +22,7 @@ defmodule HabitsWeb.Endpoint do
     gzip: false,
     only: ~w(assets fonts images favicon.ico robots.txt)
 
+  plug Corsica, origins: "*", allow_headers: :all
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
