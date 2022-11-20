@@ -5,7 +5,9 @@ defmodule HabitsWeb.GraphQL.Types.User do
   object :user_query do
     @desc "information on currently authenticated user"
     field :current_user, :user do
-      resolve(fn (_root, _args, _info) -> {:ok, %{id: Ecto.UUID.generate(), email: "test@testing.com"}} end)
+      resolve(fn _root, _args, _info ->
+        {:ok, %{id: Ecto.UUID.generate(), email: "test@testing.com"}}
+      end)
     end
   end
 

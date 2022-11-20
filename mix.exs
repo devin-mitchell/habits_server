@@ -39,6 +39,8 @@ defmodule Habits.MixProject do
       {:absinthe, "~> 1.7"},
       {:absinthe_relay, "~> 1.5"},
       {:absinthe_plug, "~> 1.5"},
+      {:assent, "~> 0.2.1"},
+      {:pow_assent, "~> 0.4.13"},
       {:corsica, "~> 1.0"},
       {:postgrex, ">= 0.0.0"},
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
