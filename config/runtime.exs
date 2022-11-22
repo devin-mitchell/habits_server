@@ -63,6 +63,16 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  # PowAssent Config
+  config :habits, :pow_assent,
+    providers: [
+      github: [
+        client_id: "f12780fa41dfe2739b02",
+        client_secret: System.get_env("GITHUB_CLIENT_SECRET"), 
+        strategy: Assent.Strategy.Github
+      ]
+    ]
+
   # ## Configuring the mailer
   #
   # In production you need to configure the mailer to use a different adapter.
