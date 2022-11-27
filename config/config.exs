@@ -52,6 +52,16 @@ config :habits, :pow,
   user: Habits.Accounts.User,
   repo: Habits.Repo
 
+# PowAssent Config with GitHub provider
+config :habits, :pow_assent,
+  providers: [
+    github: [
+      client_id: "f12780fa41dfe2739b02",
+      client_secret: System.get_env("GITHUB_CLIENT_SECRET"),
+      strategy: Assent.Strategy.Github
+    ]
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

@@ -41,12 +41,12 @@ defmodule HabitsWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug HabitsWeb.Router
 
   plug Plug.Session,
     store: :cookie,
     key: "_my_app_key",
     signing_salt: "secret"
 
-  plug Pow.Plug.Session, otp_app: :my_app
+  plug Pow.Plug.Session, otp_app: :habits
+  plug HabitsWeb.Router
 end

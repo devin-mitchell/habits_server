@@ -1,9 +1,14 @@
 defmodule Habits.Accounts.User do
   use Ecto.Schema
-  use PowAssent.Ecto.UserIdentities.Schema, user: Habits.Users.User
+  use Pow.Ecto.Schema
+  use PowAssent.Ecto.Schema
+
+  alias Habits.Accounts.UserIdentity
 
   schema "users" do
-    pow_assent_user_identity_fields()
+    has_many :user_identities, UserIdentity
+
+    pow_user_fields()
 
     timestamps()
   end
