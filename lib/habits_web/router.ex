@@ -16,8 +16,10 @@ defmodule HabitsWeb.Router do
   end
 
   pipeline :protected do
-    plug Pow.Plug.RequireAuthenticated,
-      error_handler: HabitsWeb.APIAuthErrorHandler
+    if Mix.env() === :prod do
+      plug Pow.Plug.RequireAuthenticated,
+        error_handler: HabitsWeb.APIAuthErrorHandler
+    end
   end
 
   pipeline :browser do
